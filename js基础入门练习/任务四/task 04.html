@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+    .ul_position {
+        position: relative;
+        height: 200px;
+    }
+    
+    #ul_show {
+        width: 900px;
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+    }
+    
+    #ul_show li {
+        display: inline-block;
+        padding: 5px 10px;
+        color: white;
+        cursor: pointer;
+        transition: all 0.5s;
+        margin: 0px 1px;
+    }
+    
+    #ul_show li:nth-child(n) {
+        background-color: #fe5555;
+    }
+    
+    #ul_show li:nth-child(2n+1) {
+        background-color: #34c849;
+    }
+    
+    .btn {
+        border: none;
+        outline: none;
+        cursor: pointer;
+    }
+    
+    .success {
+        background-color: #34c849;
+        color: white;
+    }
+    
+    .danger {
+        background-color: #fe5555;
+        color: white;
+    }
+</style>
+
+<body>
+    <form>
+        <input id="input" type="text" name="" value="" placeholder="请输入10-100之间的数字">
+
+        <button id="append_left" class="btn success" type="button">左侧入</button>
+        <button id="append_right" class="btn success" type="button">右侧入</button>
+
+        <span>&nbsp&nbsp&nbsp</span>
+
+        <button id="del_left" class="btn danger" type="button">左侧出</button>
+        <button id="del_right" class="btn danger" type="button">右侧出</button>
+    </form>
+    <div class="ul_position">
+        <ul id="ul_show"></ul>
+    </div>
+
+    <script>
+        var input = document.getElementById("input"),
+            append_left = document.getElementById("append_left"),
+            append_right = document.getElementById("append_right"),
+            del_left = document.getElementById("del_left"),
+            del_right = document.getElementById("del_right"),
+            ul = document.getElementById("ul_show"),
+            s_b_sort = document.getElementById("s_b_sort");
+        b_s_sort = document.getElementById("b_s_sort");
+
+        // 输入验证
+        function input_validation(direction) {
+            console.log(typeof(parseInt(input.value)))
+            if (!input.value) {
+                alert("请输入10到100之间的数字")
+            } else if (parseInt(input.value) < 10 || parseInt(input.value) > 100) {
+                alert("请输入10到100之间的数字");
+            } else if (typeof(parseInt(input.value)) != "number") {
+                alert("请输入数字");
+            } else {
+                append(direction);
+            }
+        }
+
+        // 添加
+        function append(direction) {
+            var li = document.createElement("li");
+            li.innerHTML = input.value;
+            li.setAttribute("data-h", input.value);
+            input.value = "";
+            input.focus();
+            if (direction == "left") {
+                if (ul.children.length > 60) {
+                    alert("最多添加60个");
+                } else {
+                    ul.insertBefore(li, ul.firstChild);
+                }
+            } else if (direction == "right") {
+                if (ul.children.length > 60) {
+                    alert("最多添加60个");
+                } else {
+                    ul.appendChild(li);
+                }
+            }
+        }
+        // 删除
+        function del(direction) {
+            if (direction == "left") {
+                if (confirm("是否删除：" + ul.firstChild.getAttribute("data-h"))) {
+                    ul.removeChild(ul.firstChild);
+                }
+            } else if (direction == "right") {
+                if (confirm("是否删除：" + ul.lastChild.getAttribute("data-h"))) {
+                    ul.removeChild(ul.lastChild);
+                }
+            } else {
+                if (confirm("是否删除：" + direction.target.getAttribute("data-h"))) {
+                    ul.removeChild(direction.target);
+                }
+            }
+        }
+
+        // 事件绑定
+        append_left.addEventListener("click", function() {
+            input_validation("left");
+        })
+        append_right.addEventListener("click", function() {
+            input_validation("right");
+        })
+        del_left.addEventListener("click", function() {
+            del("left");
+        })
+        del_right.addEventListener("click", function() {
+            del("right");
+        })
+        ul.addEventListener("click", function(e) {
+            del(e);
+        })
+    </script>
+</body>
+
+</html>
