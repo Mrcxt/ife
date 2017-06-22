@@ -2,149 +2,295 @@
 <html lang="en">
 
 <head>
-    <title></title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>表单输入</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .arrcontent {
+            margin-top: 10px;
+            vertical-align: bottom;
+            min-height: 50px;
+            margin-bottom: 10px;
+        }
+        
+        .arrcontent>span {
+            height: 50px;
+            background: #f00;
+            min-width: 50px;
+            text-align: center;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            margin-right: 10px;
+            vertical-align: bottom;
+            position: relative;
+            border-radius: 5px;
+            line-height: 50px;
+            font-size: 14px;
+            padding: 0 5px;
+            margin-bottom: 10px;
+        }
+        
+        .arrcontent>span>em {
+            position: absolute;
+            left: 50%;
+            bottom: -30px;
+            width: 50px;
+            height: 20px;
+            background: #fff;
+            border: 1px #02b875 solid;
+            color: #222;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 12px;
+            margin-left: -35px;
+            line-height: 20px;
+            padding: 0 10px;
+        }
+        
+        .wrap {
+            width: 580px;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+        
+        input {
+            width: 320px;
+        }
+        
+        input,
+        textarea {
+            width: 320px;
+            border: 1px #ddd solid;
+            height: 20px;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        
+        textarea {
+            height: 150px;
+        }
+        
+        #likeBtn {
+            background: #2a6496;
+            padding: 5px 10px;
+            border-radius: 5px;
+            width: 60px;
+            text-align: center;
+            height: 35px;
+            line-height: 35px;
+            color: #fff;
+            font-size: 12px;
+            margin: 0 auto;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .btn_wrap {
+            width: 320px;
+        }
+    </style>
 </head>
-<style>
-    .ul_position {
-        position: relative;
-        height: 200px;
-    }
-    
-    #ul_show {
-        width: 900px;
-        position: absolute;
-        left: 0px;
-        bottom: 0px;
-    }
-    
-    #ul_show li {
-        display: inline-block;
-        padding: 5px 10px;
-        color: white;
-        cursor: pointer;
-        transition: all 0.5s;
-        margin: 0px 1px;
-    }
-    
-    #ul_show li:nth-child(n) {
-        background-color: #fe5555;
-    }
-    
-    #ul_show li:nth-child(2n+1) {
-        background-color: #34c849;
-    }
-    
-    .btn {
-        border: none;
-        outline: none;
-        cursor: pointer;
-    }
-    
-    .success {
-        background-color: #34c849;
-        color: white;
-    }
-    
-    .danger {
-        background-color: #fe5555;
-        color: white;
-    }
-</style>
 
 <body>
-    <form>
-        <!--<input id="input" type="text" name="" value="" placeholder="请输入10-100之间的数字">-->
-        <textarea id="input" rows="4" cols="20"></textarea>
+    <div class="wrap">
+        <div>
+            <div style="margin-bottom:10px">tag:</div>
+            <input id="tag" type="text" placeholder="输入标签" />
+        </div>
 
-        <button id="append_left" class="btn success" type="button">左侧入</button>
-        <button id="append_right" class="btn success" type="button">右侧入</button>
+        <div class="arrcontent" id="tagContent"></div>
+        <textarea id="char" name="" id="" cols="30" rows="10"></textarea>
+        <div class="btn_wrap">
+            <div id="likeBtn">添加爱好</div>
+        </div>
 
-        <span>&nbsp&nbsp&nbsp</span>
-
-        <button id="del_left" class="btn danger" type="button">左侧出</button>
-        <button id="del_right" class="btn danger" type="button">右侧出</button>
-    </form>
-    <div class="ul_position">
-        <ul id="ul_show"></ul>
+        <div class="arrcontent" id="likeContent"></div>
     </div>
 
+
     <script>
-        var input = document.getElementById("input"),
-            append_left = document.getElementById("append_left"),
-            append_right = document.getElementById("append_right"),
-            del_left = document.getElementById("del_left"),
-            del_right = document.getElementById("del_right"),
-            ul = document.getElementById("ul_show");
+        //对数组去重//去空格
+        Array.prototype.unique = function() {
+            var res = [];
+            var json = {};
 
-        // 输入验证
-        function input_validation(direction) {
-            if (!input.value) {
-                alert("请输入10到100之间的数字")
-            } else if (parseInt(input.value) < 10 || parseInt(input.value) > 100) {
-                alert("请输入10到100之间的数字");
-            } else if (typeof(parseInt(input.value)) != "number") {
-                alert("请输入数字");
-            } else {
-                append(direction);
+            for (var i = 0; i < this.length; i++) {
+                if (!json[this[i]] && this[i] != "") {
+                    res.push(this[i]);
+                    json[this[i]] = 1;
+                }
+            }
+
+            return res;
+
+        };
+
+        function inputPar(ele) {
+
+            //默认数组
+            this.arr = []; //当前存入的值
+            this.Allarr = [];
+            this.ele = ele;
+
+            //去空格 私有方法
+            var trim = function(str) {
+                    return str.replace(/(^\s*)|(\s*$)/g, '');
+                }
+                //对输入的信息进行验证
+            this.regString = function() {
+                    if (this.Texts == "" || this.Texts == null) {
+                        //alert("输入的内容不能为空")
+                        this.arr = []; //当前存入的值
+                        return false;
+                    } else {
+                        var array = this.Texts.split(/[,，、 \n\t\r]+/); //把输入的内容进行分割
+                        array = array.unique(); //去重,去空
+                        this.arr = [];
+                        if (this.Allarr.length > 0) {
+                            for (var i = 0; i < array.length; i++) {
+                                var flage = false;
+                                for (var j = 0; j < this.Allarr.length; j++) {
+                                    if (array[i] == this.Allarr[j]) {
+                                        flage = true;
+                                    }
+                                }
+                                if (!flage) {
+                                    this.arr.push(array[i]);
+                                }
+                            }
+                        } else {
+                            for (var i = 0; i < array.length; i++) {
+                                this.arr.push(array[i]);
+                            }
+                        }
+
+                    }
+                }
+                //插入
+            this.chaRu = function(inputText) {
+                    this.Texts = inputText;
+                    this.regString();
+
+                    if (!this.arr[0] || this.arr[0] == null) {
+                        return false;
+                    }
+                    console.log(this.arr);
+                    for (var i = 0; i < this.arr.length; i++) {
+                        this.Allarr.push(this.arr[i]);
+                    }
+
+                    if (this.Allarr.length > 10) {
+                        this.Allarr = this.Allarr.slice(this.Allarr.length - 10, this.Allarr.length);
+                    }
+                    console.log("this.Allarr" + this.Allarr)
+                        //执行渲染
+                    this.render();
+                }
+                //渲染
+            this.render = function() {
+                //ele 传入的插入div
+                var html = "";
+                var htmlContent = "<span>{num}</span>";
+
+                for (var i = 0; i < this.Allarr.length; i++) {
+                    html += htmlContent.replace("{num}", this.Allarr[i]);
+                }
+                this.ele.innerHTML = html;
             }
         }
 
-        // 添加
-        function append(direction) {
-            var li = document.createElement("li");
-            li.innerHTML = input.value;
-            li.setAttribute("data-h", input.value);
-            input.value = "";
-            input.focus();
-            if (direction == "left") {
-                if (ul.children.length > 60) {
-                    alert("最多添加60个");
-                } else {
-                    ul.insertBefore(li, ul.firstChild);
-                }
-            } else if (direction == "right") {
-                if (ul.children.length > 60) {
-                    alert("最多添加60个");
-                } else {
-                    ul.appendChild(li);
+        //tag 继承inputPar
+
+        function tagInput(ele) {
+            inputPar.call(this, ele); //继承父层
+
+            //划过显示删除文字
+            this.hoverTag = function() {
+                var span = this.ele.getElementsByTagName('span');
+                var em = document.createElement('em');
+                em.innerHTML = '点击删除';
+                for (var i = 0; i < span.length; i++) {
+                    (function(i) {
+                        span[i].addEventListener('mouseenter', function(e) {
+                            span[i].appendChild(em);
+                        })
+
+                        span[i].addEventListener('mouseout', function(e) {
+                            span[i].removeChild(em);
+                        })
+
+                    })(i)
                 }
             }
+
+            //点击本身删除
+            this.clickDel = function() {
+                var span = this.ele.getElementsByTagName('span');
+                var self = this;
+                for (var i = 0; i < span.length; i++) {
+                    (function(i) {
+                        span[i].addEventListener('click', function() {
+                            self.Allarr.splice(i, 1);
+                            console.log(self.Allarr);
+                            self.render();
+                            self.hoverTag();
+                            self.clickDel();
+                        })
+                    })(i)
+                }
+            }
+            console.log(this.Allarr);
         }
-        // 删除
-        function del(direction) {
-            if (direction == "left") {
-                if (confirm("是否删除：" + ul.firstChild.getAttribute("data-h"))) {
-                    ul.removeChild(ul.firstChild);
-                }
-            } else if (direction == "right") {
-                if (confirm("是否删除：" + ul.lastChild.getAttribute("data-h"))) {
-                    ul.removeChild(ul.lastChild);
-                }
-            } else {
-                if (confirm("是否删除：" + direction.target.getAttribute("data-h"))) {
-                    ul.removeChild(direction.target);
-                }
-            }
+        //爱好继承父类
+        function likeFun(ele) {
+            inputPar.call(this, ele); //继承父层
+            console.log(this.Allarr);
         }
 
-        // 事件绑定
-        append_left.addEventListener("click", function() {
-            input_validation("left");
-        })
-        append_right.addEventListener("click", function() {
-            input_validation("right");
-        })
-        del_left.addEventListener("click", function() {
-            del("left");
-        })
-        del_right.addEventListener("click", function() {
-            del("right");
-        })
-        ul.addEventListener("click", function(e) {
-            del(e);
-        })
+        //函数绑定
+        var bangDing = function() {
+                var tagText = document.getElementById("tag");
+                var likeText = document.getElementById("char");
+                var tagContent = document.getElementById("tagContent");
+                var likeContent = document.getElementById("likeContent");
+                var likeBtn = document.getElementById("likeBtn");
+
+                var tag1 = new tagInput(tagContent);
+                var like1 = new likeFun(likeContent);
+                return {
+                    tag: function() {
+                        document.onkeyup = function(event) {
+                            var e = event || window.event;
+                            var keyCode = e.keyCode || e.which;
+                            if (keyCode == 32 || keyCode == 13 || keyCode == 188) {
+                                if (tagText.value == "" || tagText.value == null) {
+                                    return false
+                                };
+                                tag1.chaRu(tagText.value);
+                                tag1.hoverTag();
+                                tag1.clickDel();
+                            }
+                        }
+                    },
+                    like: function() {
+                        likeBtn.addEventListener('click', function() {
+                            like1.chaRu(likeText.value);
+                        });
+                    }
+                }
+            }
+            //入口函数
+        function init() {
+            bangDing().tag();
+            bangDing().like();
+        }
+
+        init();
     </script>
 </body>
 

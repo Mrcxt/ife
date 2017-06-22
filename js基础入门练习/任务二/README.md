@@ -1,4 +1,3 @@
-<link rel="stylesheet" type="" href="https://dn-maxiang.qbox.me/res-min/themes/marxico.css?1493307398967">
 
 ## 任务目的
 
