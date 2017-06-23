@@ -1,0 +1,84 @@
+// 
+@pd : 20px;
+@bgc : #eee;
+@bdc : #999;
+
+
+
+// 
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "微软雅黑";
+    font-size: 14px;
+}
+.cf::after{
+        content: "";
+        display: block;
+        clear: both;
+        height: 0px;
+    }
+ul{
+    list-style: none;
+}
+
+
+// 
+img{
+    width: 80px;
+    height: 80px;
+}
+
+// 
+body{
+    padding: @pd;
+    background-color: white;
+}
+.bdBgPd{
+    padding: @pd;
+    border: 1px solid @bdc;
+    background-color: white;
+    
+}
+.container{
+    width: 100%;
+    min-width: 500px;
+    background-color: @bgc;
+    .leftSide{
+        float: left;
+        width: 200px;
+        .logo{
+            float: left;
+            width: 80px;
+            height: 80px;
+            margin-right: 20px;
+        }
+        p{
+            float: left;
+            width: 58px;
+        }
+    }
+    .rightSide{
+        float: right;
+        width: 120px;
+        li{
+            margin-bottom: 20px;
+            &:last-child{
+                margin-bottom: 0px;
+            }
+        }
+    }
+    .main{
+        // 第一种方法
+        // overflow: hidden;
+
+        // 第二种方法
+        margin-left: 220px;
+        margin-right: 140px;
+        p{
+            text-indent: 2rem;
+            margin-bottom: 0.5rem;
+        }
+    }
+}

@@ -1,0 +1,66 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "微软雅黑";
+  font-size: 14px;
+}
+.cf::after {
+  content: "";
+  display: block;
+  clear: both;
+  height: 0px;
+}
+ul {
+  list-style: none;
+}
+img {
+  width: 80px;
+  height: 80px;
+}
+body {
+  padding: 20px;
+  background-color: white;
+}
+.bdBgPd {
+  padding: 20px;
+  border: 1px solid #999;
+  background-color: white;
+}
+.container {
+  width: 100%;
+  min-width: 500px;
+  background-color: #eee;
+}
+.container .leftSide {
+  float: left;
+  width: 200px;
+}
+.container .leftSide .logo {
+  float: left;
+  width: 80px;
+  height: 80px;
+  margin-right: 20px;
+}
+.container .leftSide p {
+  float: left;
+  width: 58px;
+}
+.container .rightSide {
+  float: right;
+  width: 120px;
+}
+.container .rightSide li {
+  margin-bottom: 20px;
+}
+.container .rightSide li:last-child {
+  margin-bottom: 0px;
+}
+.container .main {
+  margin-left: 220px;
+  margin-right: 140px;
+}
+.container .main p {
+  text-indent: 2rem;
+  margin-bottom: 0.5rem;
+}
