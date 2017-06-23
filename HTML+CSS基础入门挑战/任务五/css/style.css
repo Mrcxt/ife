@@ -1,0 +1,210 @@
+/* 样式重置 */
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: "微软雅黑";
+}
+ul {
+  list-style: none;
+}
+.cf::after {
+  content: "";
+  display: block;
+  clear: both;
+  height: 0px;
+}
+/* 样式预设 */
+body {
+  background-color: #bbb;
+}
+h1 {
+  font-size: 200%;
+  margin: 15px 0px;
+}
+h2 {
+  font-size: 150%;
+  color: #999;
+  margin: 10px 0px;
+}
+h3 {
+  font-size: 80%;
+  margin: 5px 0px;
+  color: #999;
+}
+/* 模块样式 */
+.header,
+.footer {
+  width: 100%;
+  height: 50px;
+  background-color: #333;
+}
+.header {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+}
+.header h1 {
+  color: white;
+  display: inline-block;
+  margin: 0px;
+  margin-left: 10px;
+}
+.header ul {
+  float: right;
+  margin-right: 10px;
+}
+.header ul li {
+  display: inline-block;
+  margin-left: 10px;
+}
+.header ul li a {
+  color: white;
+  height: 50px;
+  line-height: 50px;
+  font-size: 14px;
+}
+.container {
+  padding: 0px 20px;
+  margin-top: 50px;
+  border: 1px solid transparent;
+}
+.container .column {
+  padding: 20px;
+  margin: 20px 0px;
+  background-color: white;
+  border: 1px solid #eee;
+  border-radius: 5px;
+}
+.container .column p.retract {
+  text-indent: 2rem;
+}
+.container .column img {
+  width: 300px;
+}
+.container .column li.imgShow {
+  width: 100px;
+  padding: 10px;
+  margin: 20px 0px;
+  border: 1px solid #ddd;
+  text-align: center;
+  float: left;
+  margin: 10px;
+}
+.container .column li.imgShow p {
+  margin: 10px 0px;
+}
+.container .column li.imgShow img {
+  width: 100%;
+}
+.container .column ol {
+  margin-left: 50px;
+}
+.container .column ol li {
+  margin: 10px 0px;
+}
+.container .column table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+.container .column table th,
+.container .column table td {
+  padding: 5px;
+}
+.container .column table thead {
+  background-color: #333;
+  color: white;
+}
+.container .column table thead tr th {
+  text-align: left;
+}
+.container .column table tfoot {
+  background-color: #ddd;
+}
+.container .column table tfoot tr td {
+  border: 1px solid #ddd;
+}
+.container .column blockquote {
+  padding: 10px;
+  margin: 10px 0px;
+  border-left: 5px solid #ddd;
+}
+.container .column form {
+  width: 100%;
+}
+.container .column form .form-group {
+  border-radius: 5px;
+}
+.container .column form .form-group::after {
+  content: "";
+  display: block;
+  clear: both;
+  height: 0px;
+}
+.container .column form .form-group .form-group-title {
+  float: left;
+  width: 40%;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: right;
+}
+.container .column form .form-group .input-group {
+  float: left;
+  width: 60%;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: left;
+}
+.container .column form .form-group .input-group input[type="text"],
+.container .column form .form-group .input-group input[type="password"] {
+  height: 22px;
+  line-height: 22px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  padding: 0px 5px;
+  border: 1px solid #ddd;
+}
+.container .column form .form-group .input-group span {
+  display: block;
+  margin-top: 5px;
+  font-size: 12px;
+  color: #999;
+}
+.container .column form .form-group .input-group textarea {
+  width: 80%;
+  height: 100px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  box-sizing: border-box;
+}
+.container .column form .form-group .btn {
+  width: 100%;
+  padding: 15px 0px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  background-color: #009dff;
+  color: white;
+  cursor: pointer;
+}
+.container .column form .form-group .btn:hover {
+  background-color: #00adff;
+}
+.container .column form .form-group .btn:active {
+  background-color: #009dff;
+}
+.container .left {
+  margin-right: 320px;
+}
+.container .right {
+  width: 300px;
+  float: right;
+}
+.footer {
+  text-align: center;
+}
+.footer p {
+  height: 50px;
+  line-height: 50px;
+}
