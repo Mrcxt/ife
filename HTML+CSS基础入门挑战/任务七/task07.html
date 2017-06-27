@@ -5,6 +5,7 @@
     <title></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
 
@@ -63,7 +64,7 @@
                 <p class="map_title">查找新世界城市活动信息</p>
                 <p class="map_state">每个城市有不同的活动信息，请自主查询您所需要了解的城市</p>
                 <form class="map_search">
-                    <div class="map_flex_item">
+                    <!--<div class="map_flex_item">
                         <select>
                             <option value="1">国家</option>
                             <option value="0">中国</option>
@@ -80,6 +81,36 @@
                             <option value="0">城市</option>
                             <option value="1">美国</option>
                         </select>
+                    </div>-->
+                    <div class="map_flex_item">
+                        <div class="select">
+                            <div class="select_display">国家<img class="select_r_red" src="./img/select_b_red.png" alt=""></div>
+                            <ul class="select_display_none">
+                                <li><i class="fa fa-check-square-o"></i>中国</li>
+                                <li><i class="fa fa-check-square-o"></i>美国</li>
+                                <li><i class="fa fa-check-square-o"></i>日本</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="map_flex_item">
+                        <div class="select">
+                            <div class="select_display">省份<img class="select_r_red" src="./img/select_b_red.png" alt=""></div>
+                            <ul class="select_display_none">
+                                <li><i class="fa fa-check-square-o"></i>山东</li>
+                                <li><i class="fa fa-check-square-o"></i>江苏</li>
+                                <li><i class="fa fa-check-square-o"></i>广东</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="map_flex_item">
+                        <div class="select">
+                            <div class="select_display">城市<img class="select_r_red" src="./img/select_b_red.png" alt=""></div>
+                            <ul class="select_display_none">
+                                <li><i class="fa fa-check-square-o"></i>北京</li>
+                                <li><i class="fa fa-check-square-o"></i>上海</li>
+                                <li><i class="fa fa-check-square-o"></i>重庆</li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="map_flex_item">
                         <a href="javascript:;">搜索</a>
@@ -152,41 +183,57 @@
                     </div>
                 </div>
                 <div class="side_left">
-                    <p class="panel">
+                    <div class="panel">
                         <p class="panel_title">新世界志愿者协议</p>
                         <p class="panel_p">加入新世界志愿者的人员必须遵守中华人民共和国的相关法律法规，并且本着平等资源的原则</p>
-                        <p class="panel_more"><span>∨</span>more</p>
+                        <p class="panel_more"><i class="fa fa-angle-double-down"></i>more</p>
+                    </div>
+                    <div class="panel">
+                        <p class="panel_title">新世界志愿者协议</p>
+                        <p class="panel_p">加入新世界志愿者的人员必须遵守中华人民共和国的相关法律法规，并且本着平等资源的原则</p>
+                        <p class="panel_more"><i class="fa fa-angle-double-down"></i>more</p>
+                    </div>
+                    <div class="panel">
+                        <p class="panel_title">更多协议</p>
+                        <p class="panel_more"><i class="fa fa-angle-double-down"></i>more</p>
+                    </div>
+                </div>
+                <div class="side_right">
+                    <form>
+                        <input class="form_item" type="text" name="" value="" placeholder="姓名：">
+                        <input class="form_item" type="text" name="" value="" placeholder="年龄：">
+                        <input class="form_item" type="text" name="" value="" placeholder="联系方式：">
+                        <input class="form_item" type="text" name="" value="" placeholder="联系地址：">
+                        <textarea class="form_item" rows="" cols="" placeholder="请简单描述您梦想的生活"></textarea>
+                        <a class="form_item" href="javascript:;">提交申请</a>
+                    </form>
                 </div>
             </div>
-            <div class="side_right">
-                right
+            <div class="column_8">
+                <div class="contact">
+                    <div class="contact_title">联系我们</div>
+                    <div class="contact_p">为了更好的获取我们最新的产品咨询，您可以留下您的电子邮箱快速订阅我们的产品资讯<br>也可以通过以下任何方式关注我们的动态</div>
+                    <div class="contact_input cf">
+                        <input type="text" name="" value="" placeholder="someone@email.com">
+                        <a href="javascript:;">提交</a>
+                    </div>
+                    <div class="contact_sns">
+                        <a href="javascript:;"><img src="./img/sns_qq.png" alt=""></a>
+                        <a href="javascript:;"><img src="./img/sns_weibo.png" alt=""></a>
+                        <a href="javascript:;"><img src="./img/sns_twitter.png" alt=""></a>
+                        <a href="javascript:;"><img src="./img/sns_world.png" alt=""></a>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="column_8">
-            <div class="contact">
-                <div class="contact_title"></div>
-                <div class="contact_p"></div>
-                <div class="contact_input">
-                    <input type="text" name="" value="" placeholder="someone@email.com">
-                    <a href="javascript:;">提交</a>
-                </div>
-                <div class="contact_sns">
-                    <a href="javascript:;"><img src="./img/sns_qq.png" alt=""></a>
-                    <a href="javascript:;"><img src="./img/sns_weibo.png" alt=""></a>
-                    <a href="javascript:;"><img src="./img/sns_twitter.png" alt=""></a>
-                    <a href="javascript:;"><img src="./img/sns_world.png" alt=""></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="footer">
-        <div class="footer_content">
-            <p>@2016新世界</p>
-            <a class="back_to_top" href="javascript:;">
+        <div class="footer">
+            <div class="footer_content">
+                <p>@2016新世界</p>
+                <a class="back_to_top" href="javascript:;">
                     Back to top
                 </a>
+            </div>
         </div>
-    </div>
     </div>
 </body>
 
