@@ -2,3 +2,52 @@
   margin: 0px;
   padding: 0px;
 }
+.cf::after {
+  content: "";
+  display: block;
+  clear: both;
+  height: 0px;
+}
+.header {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  background-color: white;
+  border-bottom: 1px solid royalblue;
+}
+.header a {
+  float: left;
+  width: 20%;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+}
+.box {
+  margin-top: 50px;
+}
+.box div {
+  height: 600px;
+  width: 100%;
+}
+.box div:nth-child(2) {
+  background-color: #aa4;
+}
+.box div:nth-child(4) {
+  background-color: #fe5555;
+}
+.box div:nth-child(6) {
+  background-color: #fe5;
+}
+.box div:nth-child(8) {
+  background-color: #aa4312;
+}
+.box div:nth-child(10) {
+  background-color: #023459;
+}
+.box .target-fix {
+  position: relative;
+  top: -50px;
+  display: block;
+  height: 1px;
+  overflow: hidden;
+}

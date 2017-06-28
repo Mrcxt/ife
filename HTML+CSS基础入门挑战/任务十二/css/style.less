@@ -3,4 +3,54 @@
     padding: 0px;
 }
 
+.cf::after {
+    content: "";
+    display: block;
+    clear: both;
+    height: 0px;
+}
 
+.header {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    background-color: white;
+    border-bottom: 1px solid royalblue;
+    a {
+        float: left;
+        width: 20%;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+    }
+}
+
+.box {
+    margin-top: 50px;
+    div {
+        height: 600px;
+        width: 100%;
+        &:nth-child(2) {
+            background-color: #aa4;
+        }
+        &:nth-child(4) {
+            background-color: #fe5555;
+        }
+        &:nth-child(6) {
+            background-color: #fe5;
+        }
+        &:nth-child(8) {
+            background-color: #aa4312;
+        }
+        &:nth-child(10) {
+            background-color: #023459;
+        }
+    }
+    .target-fix {
+        position: relative;
+        top: -50px; // 偏移值 
+        display: block;
+        height: 1px;
+        overflow: hidden;
+    }
+}
