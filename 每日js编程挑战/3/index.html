@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+    
+    ul {
+        list-style: none;
+        margin: 50px;
+    }
+    
+    span {
+        width: 100px;
+        padding: 5px 0px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+        border-left: 1px solid #ddd;
+        box-sizing: border-box;
+    }
+    
+    li span:last-child {
+        border-top: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+    }
+</style>
+
+<body>
+    <ul id="ul"></ul>
+    <script>
+        // 渲染乘法表
+        function mult(num) {
+            var ul = document.getElementById('ul');
+            for (var i = 1; i <= num; i++) {
+                var li = document.createElement('li');
+                for (var j = 1; j <= i; j++) {
+                    var span = document.createElement('span');
+                    span.innerHTML = i + '*' + j + '=' + i * j;
+                    span.style.display = 'none'; //默认隐藏
+                    li.appendChild(span);
+                }
+                ul.appendChild(li);
+            }
+            animate();
+        }
+
+        // 展示动画
+        function animate() {
+            var span = ul.getElementsByTagName('span');
+            var _index = 0;
+            var timer = setInterval(function() {
+                span[_index].style.display = 'inline-block';
+                _index++;
+                if (_index >= span.length) {
+                    clearInterval(timer)
+                }
+            }, 100);
+        }
+        // 启动
+        mult(9)
+    </script>
+</body>
+
+</html>
