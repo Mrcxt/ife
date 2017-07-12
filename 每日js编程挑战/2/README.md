@@ -1,0 +1,40 @@
+- 给定一个随机数组，实现快速排序
+
+> 考查快速排序思想：
+> - 快速排序思想：先找到一个基准点（一般指数组的中部），然后数组被该基准点分为两部分，依次与该基准点数据比较，如果比它小，放左边；反之，放右边。
+> - 左右分别用一个空数组去存储比较后的数据。最后递归执行上述操作，直到数组长度<=1;
+
+```JavaScript
+        (function() {
+            // 快排函数
+            function quickSort(arr) {
+                // 如果arr只有一个，直接返回
+                if (arr.length <= 1) {
+                    return arr;
+                }
+                // 中间数的index
+                var middleIndex = Math.floor(arr.length / 2);
+                // 中间数
+                var middleArr = arr.splice(middleIndex, 1);
+
+                var left = [],
+                    right = [];
+
+                for (var i = 0; i < arr.length; i++) {
+                    // 遍历数组，比中间数小的就加到左边，比中间数大的就加到右边
+                    if (arr[i] <= middleArr) {
+                        left.push(arr[i]);
+                    } else {
+                        right.push(arr[i]);
+                    }
+                }
+                // 递归调用，然后连接所有数组
+                return quickSort(left).concat(middleArr, quickSort(right));
+            }
+
+            // 测试
+            var arr = [1, 2, 3, 2, 1, 2, 2, 4, 6, 4, 7, 9, 4, 6, 7];
+            console.log(arr);
+            console.log(quickSort(arr));
+        })()
+```
